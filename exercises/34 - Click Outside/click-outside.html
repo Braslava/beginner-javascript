@@ -35,9 +35,73 @@
 
   <div class="modal-outer">
     <div class="modal-inner">
-
+      <p>Testing modal</p>
     </div>
   </div>
+  <style>
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      padding: 2rem;
+    }
+
+    .card {
+      background-color: azure;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+
+    .card h2 {
+      color: black;
+    }
+
+    .card img {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .modal-outer {
+      display: grid;
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      align-items: center;
+      justify-content: center;
+      /* Hide modal */
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .modal-outer.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-outer img {
+      width: 100%;
+    }
+
+    .modal-inner {
+      max-width: 600px;
+      min-width: 400px;
+      min-height: 200px;
+      background-color: white;
+      padding: 2rem;
+      /*adds animation to the card*/
+      transform: translateY(-200%);
+      transition: transform 2s;
+    }
+
+    .modal-outer.open .modal-inner {
+      transform: translateY(0);
+    }
+
+  </style>
   <script src="./click-outside.js"></script>
 </body>
 
