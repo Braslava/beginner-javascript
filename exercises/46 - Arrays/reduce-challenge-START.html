@@ -1,20 +1,99 @@
+/* eslint-disable prettier/prettier */
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title>Reduce!</title>
+		<link rel="stylesheet" href="../../base.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Reduce!</title>
-  <link rel="stylesheet" href="../../base.css">
-</head>
+	<body>
+		<script>
+			// Grab all the text from a web page
+			const text = `
+						Lesson 4:
+						Asynchronous JavaScript
+						 1. Async JS
+						 2. Async Promises
+						 3. Exercise: Async Function
+						 4. Async Fetch w/ Web APIs Intro
+						 5. Credentials and API keys
+						 6. Adding Fetch to Your Code
+						 7. Exercise: Async GET
+						 8. Async Fetch with Web APIs Demo
+						 9. Chaining Promises
+						 10. Updating UI Elements
+						 11. Exercise: Putting It All Together
+						 12. Updating UI Elements Demo
+						 13. Real-World Examples of Asynchronous Javascript
+						 14. Outro
+						 15. Instructor Interview
+						Mentor Help
+						Ask a mentor on our Q&A platform
+						Adding Fetch to Your Code
+						Adding Fetch to Your Code
 
-<body>
-  <script>
-    // Grab all the text from a web page
-    // Count how many times each letter and number occurs
+						Here is the client side code that would make a GET request to the animal info API:
 
+						let baseURL = 'http://api.animalinfo.org/data/?animal='
+						let apiKey = '&appid=9f15e45060...';
 
-  </script>
-</body>
+						document.getElementById('generate').addEventListener('click', performAction);
 
+						function performAction(e){
+						const newAnimal =  document.getElementById('animal').value;
+						getAnimal(baseURL,newAnimal, apiKey)
+
+						}
+						const getAnimal = async (baseURL, animal, key)=>{
+
+						  const res = await fetch(baseURL+animal+key)
+						  try {
+
+						    const data = await res.json();
+						    console.log(data)
+						    return data;
+						  }  catch(error) {
+						    console.log("error", error);
+						    // appropriately handle the error
+						  }
+						}
+						If you would like to read more about Fetch, you can check out the documentation here.;
+						`;
+
+			// Count how many times each letter and number occurs
+			function isValidChar(char) {
+			  if (char.match(/[a-z0-9]/)) {
+			    return true;
+			  }
+			  return false;
+			}
+			const lowercase = (char) => char.toLowerCase();
+
+			function instanceCounter(counts, char) {
+			  // eslint-disable-next-line no-unused-expressions
+			  counts[char]
+			    ? // if exists
+			      (counts[char] += 1)
+			    : // if does not exist
+			      // eslint-disable-next-line prettier/prettier
+					  (counts[char] = 1);
+			  return counts;
+			}
+
+			function sortByValue(a, b) {
+			  return a[1] - b[1];
+			}
+
+			const characters = text
+			  .split('')
+			  .filter(isValidChar)
+			  .map(lowercase)
+			  .reduce(instanceCounter, {});
+
+			const sortedCharacters = Object.entries(characters).sort(sortByValue);
+			console.log(sortedCharacters);
+		</script>
+	</body>
 </html>

@@ -12,7 +12,19 @@
 
 <body>
   <script>
-    const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
+    const toppings = [
+      'Mushrooms ',
+      'Tomatoes',
+      'Eggs',
+      'Chili',
+      'Lettuce',
+      'Avocado',
+      'Chiles',
+      'Bacon',
+      'Pickles',
+      'Onions',
+      'Cheese',
+    ];
 
     const students = [
       {
@@ -67,32 +79,31 @@
         birthday: 'April 22, 1993',
         names: {
           first: 'Keith',
-          last: 'Buckley'
-        }
+          last: 'Buckley',
+        },
       },
       {
         birthday: 'January 3, 1975',
         names: {
           first: 'Larry',
-          last: 'Heep'
-        }
+          last: 'Heep',
+        },
       },
       {
         birthday: 'February 12, 1944',
         names: {
           first: 'Linda',
-          last: 'Bermeer'
-        }
-      }
+          last: 'Bermeer',
+        },
+      },
     ];
-
 
     const buns = ['egg', 'wonder', 'brioche'];
 
     const meats = {
       beyond: 10,
       beef: 5,
-      pork: 7
+      pork: 7,
     };
 
     const prices = {
@@ -124,11 +135,47 @@
       { type: 'pants', price: 123 },
     ];
 
-
     /*
       Looping Methods
     */
 
+    function logTopping(topping) {
+      console.log(topping);
+    }
+    toppings.forEach((topping) => logTopping(topping));
+
+    const cleanPeople = people.map((person) => {
+      // timestamp
+      const birthday = new Date(person.birthday).getTime();
+      // current timestamp
+      const now = Date.now(); // same as - new Date().getTime();
+      const age = Math.floor((now - birthday) / 31536000000);
+      console.log(age);
+      return {
+        age, // person.age using destructuring;
+        name: `${person.names.first} ${person.names.last}`,
+      };
+    });
+    console.table(cleanPeople);
+
+    // Reduce
+
+    function inventoryReducer(totals, item) {
+      totals[item.type] ? totals[item.type] + 1 : (totals[item.type] = 1);
+      return totals;
+    }
+
+    const inventoryCounts = inventory.reduce(inventoryReducer, {});
+    console.log(inventoryCounts);
+
+    const totalInventoryPrice = inventory.reduce(
+      (accumulator, item) => accumulator + item.price,
+      0
+    );
+
+    console.log(totalInventoryPrice);
+
+// console.log(cleanPeople);
   </script>
 </body>
 
