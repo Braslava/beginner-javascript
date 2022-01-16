@@ -16,14 +16,14 @@ function Gallery(gallery) {
   this.handleClickOutside = this.handleClickOutside.bind(this);
 
   // These are our Event Listeners!
-  this.images.forEach(image =>
-    image.addEventListener('click', e => this.showImage(e.currentTarget))
+  this.images.forEach((image) =>
+    image.addEventListener('click', (e) => this.showImage(e.currentTarget))
   );
 
   // loop over each image
-  this.images.forEach(image => {
+  this.images.forEach((image) => {
     // attach an event listener for each image
-    image.addEventListener('keyup', e => {
+    image.addEventListener('keyup', (e) => {
       // when that is keyup'd, check if it was enter
       if (e.key === 'Enter') {
         // if it was, show that image
@@ -35,7 +35,7 @@ function Gallery(gallery) {
   this.modal.addEventListener('click', this.handleClickOutside);
 }
 
-Gallery.prototype.openModal = function() {
+Gallery.prototype.openModal = function () {
   console.info('Opening Modal...');
   // First check if the modal is already open
   if (this.modal.matches('.open')) {
@@ -50,7 +50,7 @@ Gallery.prototype.openModal = function() {
   this.prevButton.addEventListener('click', this.showPrevImage);
 };
 
-Gallery.prototype.closeModal = function() {
+Gallery.prototype.closeModal = function () {
   this.modal.classList.remove('open');
   // TODO: add event listeners for clicks and keyboard..
   window.removeEventListener('keyup', this.handleKeyUp);
@@ -58,31 +58,31 @@ Gallery.prototype.closeModal = function() {
   this.prevButton.removeEventListener('click', this.showPrevImage);
 };
 
-Gallery.prototype.handleClickOutside = function(e) {
+Gallery.prototype.handleClickOutside = function (e) {
   if (e.target === e.currentTarget) {
     this.closeModal();
   }
 };
 
-Gallery.prototype.handleKeyUp = function(event) {
+Gallery.prototype.handleKeyUp = function (event) {
   if (event.key === 'Escape') return this.closeModal();
   if (event.key === 'ArrowRight') return this.showNextImage();
   if (event.key === 'ArrowLeft') return this.showPrevImage();
 };
 
-Gallery.prototype.showNextImage = function() {
+Gallery.prototype.showNextImage = function () {
   console.log('SHOWING NEXT IMAGE!!!');
   this.showImage(
     this.currentImage.nextElementSibling || this.gallery.firstElementChild
   );
 };
-Gallery.prototype.showPrevImage = function() {
+Gallery.prototype.showPrevImage = function () {
   this.showImage(
     this.currentImage.previousElementSibling || this.gallery.lastElementChild
   );
 };
 
-Gallery.prototype.showImage = function(el) {
+Gallery.prototype.showImage = function (el) {
   if (!el) {
     console.info('no image to show');
     return;

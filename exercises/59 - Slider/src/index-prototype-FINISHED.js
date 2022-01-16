@@ -18,7 +18,7 @@ function Slider(slider) {
   nextButton.addEventListener('click', () => this.move());
 }
 
-Slider.prototype.startSlider = function() {
+Slider.prototype.startSlider = function () {
   this.current =
     this.slider.querySelector('.current') || this.slides.firstElementChild;
   this.prev =
@@ -26,13 +26,13 @@ Slider.prototype.startSlider = function() {
   this.next = this.current.nextElementSibling || this.slides.firstElementChild;
 };
 
-Slider.prototype.applyClasses = function() {
+Slider.prototype.applyClasses = function () {
   this.current.classList.add('current');
   this.prev.classList.add('prev');
   this.next.classList.add('next');
 };
 
-Slider.prototype.move = function(direction) {
+Slider.prototype.move = function (direction) {
   // first strip all the classes off the current slides
   const classesToRemove = ['prev', 'current', 'next'];
   this.prev.classList.remove(...classesToRemove);
@@ -65,7 +65,7 @@ console.log(mySlider, dogSlider);
 
 window.dogSlider = dogSlider;
 
-window.addEventListener('keyup', function(e) {
+window.addEventListener('keyup', (e) => {
   if (e.key === 'ArrowRight') {
     dogSlider.move();
   }
