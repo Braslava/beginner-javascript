@@ -4,12 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Recipe Fetcher</title>
+  <title>Brewery Finder</title>
   <link rel="stylesheet" href="../../base.css">
   <style>
     .search {
       display: grid;
       grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    button[disabled] {
+      opacity: 0.5;
+    }
+
+    .breweries {
+      display: grid;
+      gap: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .brewery {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 15px;
+
+    }
+
+    .wrapper {
+      padding: 20px;
     }
   </style>
 </head>
@@ -17,10 +39,10 @@
 <body>
   <div class="wrapper">
     <form class="search" autocomplete="off">
-      <input type="text" name="query">
+      <input type="text" name="query" value="New York">
       <button name="submit" type="submit">Submit</button>
     </form>
-    <div class="recipes"></div>
+    <div class="breweries"></div>
   </div>
 
   <script src="./scripts.js"></script>
