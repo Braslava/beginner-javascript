@@ -48,7 +48,7 @@ body {
 .app select {
   background: none;
   border:0;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .app form > * {
@@ -58,4 +58,8 @@ body {
   -webkit-appearance: none;
   display: grid;
   align-content: center;
+}
+
+.app select {
+  max-height: 250px;
 }
